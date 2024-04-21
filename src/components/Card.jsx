@@ -51,7 +51,7 @@ const breakPoints = [
 function Card() {
   return (
     <>
-    <section className="mt-20 container max-w-9xl mx-auto h-[450px] px-0 sm:px-20">
+    <section className="mt-20 container max-w-9xl mx-auto h-[450px] px-0 sm:px-20" >
     <div className="justify-center text-center flex items-center p-5">
       <div className="text-center px-5 w-[200px] px-3 pb-2 border-b border-b-black">
       <h1 className="text-bold text-5xl font-medium">Offers</h1>
@@ -67,9 +67,10 @@ function Card() {
         />
         <div className='rounded-lg absolute top-40 w-full h-[300px] bg-gray-300 opacity-60 text-center'>
         </div>
-        <h1 className=' absolute top-44 left-5 text-black text-current text-semibold font-medium'>{data.title}</h1>
+        <h1 className='absolute top-44 left-5 text-black text-current text-semibold font-medium text-2xl'>{data.title}</h1>
         <p className=' absolute top-52 left-5 text-black text-current text-semibold font-medium'>{data.desc}</p>
             <button className='sm:flex absolute top-60 left-5 mt-3 px-2 py-2 border border-black rounded-md bg-[#ff7000] text-black font-medium opacity-none '>Go now</button>
+            <button className='sm:flex absolute top-60 left-28 mt-3 px-2 py-2 border border-black rounded-md bg-[#FDFF00] text-black font-medium opacity-none '>Claim</button>
         </div>
       })}
     </Carousel>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="./styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+                        
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    /* width: fit-content; */
+    max-width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .grid-container {
+        max-width: 70%;
+        margin: auto;
+        position:absolute;
+        top: 12%;
+        left: 15%;
+    }
+        .header{
+            grid-area: header;
+            height: 50px;
+            background-color: rgb(40, 38, 38);
+        }
+        .sidebar {
+            position: fixed;
+            left: 0px;
+            top: 0;
+            height: 100%;
+            width: 250px;
+            background-color: #333;
+            color: #fff;
+            transition: left 0.3s;
+            overflow-y: auto;
+        }
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size:5px;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar ul li {
+            border-bottom: 1px solid black;
+        }
+        .sidebar ul li a {
+            display: block;
+            height: 100%;
+            width: 100%;
+            font-size: 20px;
+            color: #fff;
+            padding-left: 10px;
+            text-decoration: none;
+            box-sizing: border-box;
+            transition: .4s;
+        }
+        .sidebar ul li a i{
+            margin-right: 16px;
+        } 
+        .sidebar ul li:hover a {
+            padding-left: 18px;
+            background-color: #555;
+        }
+        .sidebar ul p :hover {
+            background-color: blue;
+        }
+        .sidebar .submenu {
+            display: none;
+            padding-left: 20px;
+        }
+        .sidebar .submenu a {
+            padding: 5px 15px;
+        }
+        .navigation{
+            border-bottom: 3px solid black;
+        }
+        .search{
+            display: flex;
+            justify-content: flex-start;
+            border-color: white;
+            border: solid black;
+            border-width: 2px;
+            align-items: center;
+            position: absolute;
+            top: 8px;
+            left: 50px;
+            padding: 5px 5px;
+            border-radius: 7px;
+            margin-left: 30px;
+            width:200px;
+
+        }
+        .search i{
+            margin-right: 14px;
+        }
+        
+        .search input{
+            border: none;
+        }
+
+        .main-container{
+            height: 100%;
+            position: relative;
+            max-width: 70%;
+            margin: auto;
+        }
+        #right-content{
+            max-width: fit-content;
+            margin:auto;
+        }
+        .main-title{
+            display: flex;
+            justify-content: space-between;
+        }
+        .main-cards{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 10px;
+            margin: 20px;
+            border-color: #333;
+        }
+        .card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 200px;
+        }
+        .card:first-child{
+            background-color: #2962ff;
+        }
+        .card:nth-child(2){
+            background-color: #ff6d00;
+        }
+        .card:nth-child(3){
+            background-color: #2e7d32;
+        }
+        .card-inner{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .menu-toggle span {
+            font-size: 30px;
+        }
+        #open-menu{
+            font-size: 30px;
+            position: absolute;
+            top:0;
+            left:20px;
+        }
+        #toggle-logout{
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .grid-container{
+                max-width: 768px;
+                margin-top: 50px;
+            }
+            .main-cards{
+                display: block;
+            }
+            #right-content{
+                margin-left:100px;
+            }
+        }
+
+        .menu-toggle{
+            display: none;
+            color: black;
+            z-index: 1000;
+        }
+
+        @media (max-width:425px) {
+            .grid-container{
+                /* width: 150px; */
+                /* width: fit-content; */
+                /* margin: 30px; */
+                top: 10px;
+                left: 0px;
+                margin-top: 0px;
+            }
+            .sidebar{
+                display: none;
+                width: 150px;
+            }
+            #right-content{
+                margin-top: 40px;
+                margin-left: 30px;
+            }
+            .main-cards{
+                padding-right: 100px;
+                /* width: fit-content; */
+            }
+            .card{
+                margin-right:10px;
+            }
+            .logout-button{
+                display: none;
+            }
+            #toggle-logout{
+                display: block;
+            }
+            .menu-toggle{
+                display: block;
+                margin-top: 10px;
+            }
+            
+        }
+
+        @media (max-width:320px) {
+            #right-content{
+                margin-left: 40px;
+            }
+            .grid-container{
+                
+            }
+            
+        }
+
+        /* @media (max-width:1440px){
+            #right-content{
+                margin-left:300px;
+            }
+        } */
+        .logout{
+            position: absolute;
+            top: 13px;
+            right: 10%;
+
+        }
+        .logout-button{
+            padding: 8px 30px;
+            background-color: #ff6d00;
+            border: none;
+            border-radius: 10px;
+            font-size: medium;
+        }
+
+        .header{
+            width: 100%;
+            border: 1px solid black;
+        }
+        </style>
+    </head>
+    <body>
+        <a href="#" id="open-menu" onclick="openSidebar()" class="menu-toggle"><i class="fa-solid fa-bars"></i></a>
+        <div class="sidebar" id="sidebar">
+           
+            <ul>
+                <li style="background-color: blue;"><a href="#"><i class="fa fa-home"></i></i> Dashboard</a></li>
+                <li><a href="Studentaddtion.html"><i class="fa fa-users"></i> Student details</a></li>
+                <li><a href="#"><i class="fa-solid fa-user-plus"></i>Add Student</a></li>
+                <li><a href="#"><i class="fa fa-graduation-cap"></i>Student Marks</a></li>
+                <li><a href="#" id="toggle-logout"><i class="fa fa-graduation-cap" ></i>logout</a></li>
+                
+            </ul>
+        </div>
+        <div class="logout">
+            <button class="logout-button">Logout</button>
+        </div>
+        <div class="header">
+            <div class="navbar">
+                
+            </div>
+        </div>
+        <div class="grid-container">
+            
+            <div class="main-container">
+                
+                
+            
+                <div id="right-content">
+                <div class="main-title">
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="main-cards">
+                    <div class="card">
+                        <div class="card-inner">
+                            <i class="fa fa-users"></i>
+                            <h2>Total Students</h2>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-inner">
+                            <i class="fa-solid fa-desktop"></i>
+                            <h2>Courses</h2>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-inner">
+                            <i class="fa-solid fa-book"></i>
+                            <h2>Subjects</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        let status=1;
+        function openSidebar() {
+            if(status==1){
+                status=0;
+                document.getElementById("sidebar").style.display="block";
+                document.getElementById("sidebar").style.left = "0";
+                document.getElementById("open-menu").style.margin="10px 0 0 20vh";
+                document.getElementById("right-content").style.margin="40px 0px 0px 40px";                
+            }
+            else{
+                status=1;
+                document.getElementById("sidebar").style.left = "-250px";
+                document.getElementById("sidebar").style.display="none";
+                
+                document.getElementById("open-menu").style.margin="10px 0 0 0";
+                document.getElementById("search").style.margin="0 0 0 30px";
+                
+            }
+        }
+    </script>
+</html>

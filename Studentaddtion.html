@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="./styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <a href="#" id="open-menu" onclick="openSidebar()" class="menu-toggle"><i class="fa-solid fa-bars"></i></a>
+        <div class="sidebar" id="sidebar">
+           
+            <ul>
+                <li ><a href="demo.html"><i class="fa fa-home"></i></i> Dashboard</a></li>
+                <li style="background-color: blue;"><a href="#"><i class="fa fa-users"></i> Student details</a></li>
+                <li><a href="#"><i class="fa-solid fa-user-plus"></i>Add Student</a></li>
+                <li><a href="#"><i class="fa fa-graduation-cap"></i>Student Marks</a></li>
+                <li><a href="#" id="toggle-logout"><i class="fa fa-graduation-cap" ></i>logout</a></li>
+                
+            </ul>
+        </div>
+        <div class="logout">
+            <button class="logout-button">Logout</button>
+        </div>
+        
+        <div class="grid-container">
+        
+        </div>
+    </body>
+    <script>
+        let status=1;
+        function openSidebar() {
+            if(status==1){
+                status=0;
+                document.getElementById("sidebar").style.display="block";
+                document.getElementById("sidebar").style.left = "0";
+                document.getElementById("open-menu").style.margin="10px 0 0 20vh";
+                document.getElementById("right-content").style.margin="40px 0px 0px 40px";                
+            }
+            else{
+                status=1;
+                document.getElementById("sidebar").style.left = "-250px";
+                document.getElementById("sidebar").style.display="none";
+                
+                document.getElementById("open-menu").style.margin="10px 0 0 0";
+                document.getElementById("search").style.margin="0 0 0 30px";
+                
+            }
+        }
+    </script>
+</html>

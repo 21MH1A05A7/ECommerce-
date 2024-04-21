@@ -1,27 +1,38 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom';
-
+import luffy from '../luffy.png';
 import shoe from '../shoe.png';
 import girl from '../grl.png';
 import img from "../ItemShoe.png";
 import img2 from "../Item3.png";
 import { RadioGroup } from '@headlessui/react';
-
+import Header from './Header';
+import MoreItems from './MoreItems';
+import Footer from './footer';
 const Item = (props) => {
     const location = useLocation();
-    console.log(location);
+    const data=location.state;
+    // console.log(typeof(data.img));
     return (
-<>
+<>  
+      {/* <Header></Header> */}
+        <div className="mx-auto mt-14 max-w-2xl sm:px-2 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-72">
         
-        <div className="mx-auto mt-14 max-w-2xl px-2 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-72">
-          <div className="rounded-lg lg:block sm:w-[600px]">
-            <p className='px-2 sm:px-0'>/ Men / Shoes</p>
+          <div className="rounded-lg lg:block sm:w-[600px] md:pl-10">
+            <div className='inline-flex items-center space-x-2 sm:space-x-10 '>
+            <a href="/" className=""><img
+                    className="h-10 w-10 ml-4 sm:ml-0"
+                    src={luffy}
+                    alt="Your Company"
+                  /></a>
+          <p className='px-2 sm:px-0'>/ {data.type} / Shoes</p> 
+            </div>
             <img
-              src={shoe}
-              className="h-full w-full object-cover object-center"
+              src={data.img}
+              className={`${data.img==="/static/media/prod4.c6ac623ca67e736e2f80.png" ? "" : "w-full h-full object-cover object-center"}`}
             />
           </div>
-          <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
+          <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-2">
             <div className="w-full h-[300px] overflow-hidden rounded-lg border-2">
               <img
                 src={img}
@@ -89,7 +100,7 @@ const Item = (props) => {
             <div className='px-2 sm:px-10 mx-auto block sm:grid sm:grid-cols-2 md:max-w-7xl'>
                    <div className='md:max-w-2xl py-4 md:py-0 px-2'>
                         <div>
-                            <h1 className='font-medium text-2xl py-3'>Hello World</h1>
+                            <h1 className='font-medium text-2xl py-3'>{data.name}</h1>
                             <p className=''>The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.</p>
                             <h2 className='pt-4 font-medium text-1xl'>Highlights</h2>
                             <ul className="list-disc px-6 list-disc-gray">
@@ -140,7 +151,10 @@ const Item = (props) => {
                             </div>
                         </div>
                     </div>
+                    
             </div>
+            <MoreItems></MoreItems>
+            <Footer></Footer>
             </>
   )
 }

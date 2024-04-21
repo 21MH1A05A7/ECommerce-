@@ -8,6 +8,7 @@ import img from "../running.png";
 
 function Carosal(){
     return(
+      
         <section className="mx-auto max-w-7xl py-2 px-2 xl:pr-10 pt-5 my-2">
             <div className='relative bg-[#171717] w-full sm:h-[34rem] rounded-2xl flex space-x-0 overscroll-auto h-fit'>
                 <div className="relative">

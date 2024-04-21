@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Link } from "react-router-dom";
 import { Fragment } from "react";
@@ -7,11 +7,25 @@ import { Disclosure,Menu,Transition } from '@headlessui/react';
 import {Bars3Icon,XMarkIcon} from '@heroicons/react/24/outline';
 import profile from '../profile.png';
 import { useScrollPosition } from "../hooks/useScrollPosition";
-
+import { useRef } from "react";
 
 function Header(props){
+
+
   const scrollPosition = useScrollPosition();
-    return(
+
+
+  const [position,setposition]=useState(0);
+
+  const scrollToPosition = (val) => {
+    // Replace 'x' and 'y' with the coordinates you want to scroll to
+    window.scrollTo({
+      top: val, // specify the y-coordinate
+      left: 0, // specify the x-coordinate
+      behavior: 'smooth' // smooth scrolling
+    });
+  };  
+  return(
       <>
       <Disclosure as="nav" className={`sticky top-0 z-50 bg-white transition ease-in-out duration-300 ${
         scrollPosition>0 ? "drop-shadow-lg":"drop-shadow-none"
@@ -30,20 +44,20 @@ function Header(props){
             </div>
             <div className="flex flex-1 sm:ml-20 xl:pl-60 items-center justify-center sm:items-stretch pr-10 sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <a href="/" className=""><img
+                  <a className=""><img
                     className="h-10 w-10"
                     src={luffy}
                     alt="Your Company"
-                  /></a>
+                  onClick={()=>{scrollToPosition(0)}}/></a>
                   
                 </div>
             <div className="hidden lg:ml-40 sm:flex sm:ml-20 justify-around items-center">
               <div className="flex lg:space-x-6 md:space-x-2">
-                <a href="" className="p-4 text-bold "><p className="hover:text-semibold p-1 hover:border-b-2 border-b-black">Home</p></a>
-                <a href="" className="p-4 "><p className="hover:text-semibold p-1 hover:border-b-2 border-b-black">Offers</p></a>
-                <a href="" className="p-4"><p className="hover:text-semibold p-1  hover:border-b-2 border-b-black">Products</p></a>
-                <a href="" className="p-4"><p className="hover:text-semibold p-1  hover:border-b-2 border-b-black">Men</p></a>
-                <a href="" className="p-4"><p className="hover:text-semibold p-1  hover:border-b-2 border-b-black">Women</p></a>
+                <a className="p-4 text-bold "><p className="hover:text-semibold p-1 hover:border-b-2 border-b-black" onClick={()=>{scrollToPosition(0)}}>Home</p></a>
+                <a className="p-4 "><p className="hover:text-semibold p-1 hover:border-b-2 border-b-black" onClick={()=>{scrollToPosition(600)}}>Offers</p></a>
+                <a  className="p-4"><p className="hover:text-semibold p-1  hover:border-b-2 border-b-black" onClick={()=>{scrollToPosition(1200)}}>Products</p></a>
+                <a  className="p-4"><p className="hover:text-semibold p-1  hover:border-b-2 border-b-black" onClick={()=>{scrollToPosition(2400)}}>Brands</p></a>
+                <a  className="p-4"><p className="hover:text-semibold p-1  hover:border-b-2 border-b-black">Women</p></a>
               </div>
           </div>
             <div className="hidden 2xl:flex absolute inset-y-0 right-0 flex items-center xl:static xl:ml-20 xl:px-10 border-black">
@@ -125,13 +139,11 @@ function Header(props){
         <Disclosure.Panel className="sm:hidden ">
             <div className="space-y-1 px-2 pb-3 pt-2">
             <Disclosure.Button
-                  className=
-                    'w-full bg-black text-white hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium'>
+                  className='w-full bg-black text-white hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium'>
                   Home
                 </Disclosure.Button>
                 <Disclosure.Button
-                  className=
-                    'w-full bg-black text-white text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium'>
+                  className='w-full bg-black text-white text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium'>
                   About
                 </Disclosure.Button>
                 <Disclosure.Button

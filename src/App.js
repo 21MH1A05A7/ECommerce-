@@ -7,8 +7,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Item from './components/Item';
+import { useRef } from 'react';
+// import Puma from './components/Brand.jsx'
+import Brand from './components/Brand';
 
 function App() {
+
+
+
   return (
     <>
       <BrowserRouter>
@@ -17,6 +23,7 @@ function App() {
               <Route path="/login" element={<Login />}></Route>
               <Route path="/Signup" element={<Signup></Signup>} />  
               <Route path="/Item" Component={Item}></Route>
+              <Route path="/brand" element={<Brand></Brand>}></Route>
             </Routes>
         </BrowserRouter>
 

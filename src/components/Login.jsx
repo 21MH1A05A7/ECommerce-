@@ -15,7 +15,7 @@ function Login(){
     }
 
     return <>
-    <section className="bg-gray-700 isolate w-screen h-screen sm:py-40">
+    <section className="bg-gray-700 isolate w-screen h-screen py-40">
         <div className="mx-auto max-w-2xl p-3">
             <div className="rounded-xl max-w-7xl h-[600px] bg-gray-400">
             <dl className="grid text-center sm:grid-cols-2 pt-3">
@@ -36,7 +36,6 @@ function Login(){
                 <div className="relative px-10 space-y-2">
                     <label htmlFor="" className="block text-base ">Password</label>
                     <input type={see?"password":"text"} className="w-full sm:w-[400px] sm:h-[40px] p-3 rounded-lg bg-gray-100  focus:outline-none focus:ring-1 focus:ring-blue"/>
-                    
                 </div>
                 <div className="flex-col space-y-3 flex sm:flex-row justify-between">
                     <div className="pl-10 pt-3">
