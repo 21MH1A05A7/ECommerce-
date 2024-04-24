@@ -33,6 +33,8 @@ const Brand = (props) => {
   const brand=location.state.brand;
   const [data,setproducts]=useState([])
   const [demData,setDemo]=useState([])
+  const [RatingData,setData]=useState([]);
+
   const [priceChecked,setPrice]=useState({
     "70":false,
     "90":false,
@@ -41,6 +43,10 @@ const Brand = (props) => {
     above:false
   });
 
+  const [Rating,setRating]=useState({
+    "4.5":false,
+    "3.5":false
+  });
 
 
   const [ischecked,setCheck]=useState({
@@ -66,31 +72,44 @@ const Brand = (props) => {
     if(ischecked.all){
       setproducts(productItem);
       setDemo(productItem);
-      if(priceChecked){
+      setData(productItem)
+      if(priceChecked[110]===true || priceChecked[130]===true || priceChecked[70]===true || priceChecked[90]===true || priceChecked.above===true){
         setPrice({...priceChecked})
+      }
+      if(Rating['4.5']===true || Rating['3.5']===true){
+        setRating({...Rating});
       }
     }
     else{ 
       const checkedCategories = Object.keys(ischecked).filter(
         (key) => ischecked[key]
       );
-      console.log(checkedCategories);
   
       if (checkedCategories.length === 0) {
           const arr = productItem.filter((item) => item.name === brand);
           setproducts(arr);
           setDemo(arr);
-      } else {
-          const filteredProducts = productItem.filter((item) =>
+          setData(arr);
+          if(priceChecked[110]===true || priceChecked[130]===true || priceChecked[70]===true || priceChecked[90]===true || priceChecked.above===true){
+            setPrice({...priceChecked})
+          }
+          if(Rating['4.5']===true || Rating['3.5']===true){
+            setRating({...Rating});
+          }
+      } 
+      else {
+          const filteredProducts =  productItem.filter((item) =>
               checkedCategories.includes(item.name)
           );
           setproducts(filteredProducts);
           setDemo(filteredProducts);
-          // setPrice({...priceChecked})
-          if(priceChecked){
+          setData(filteredProducts);
+          if(priceChecked[110]===true || priceChecked[130]===true || priceChecked[70]===true || priceChecked[90]===true || priceChecked.above===true){
             setPrice({...priceChecked})
           }
-        
+          if(Rating['4.5']===true || Rating['3.5']===true){
+            setRating({...Rating});
+          }
       }
     }
     }
@@ -111,8 +130,11 @@ const Brand = (props) => {
     const arr=productItem.filter((item)=>{
      return item.name===name
     })
-    setproducts(arr)
+    setproducts(arr);
+    setDemo(arr);
+    setData(arr);
   }
+
 
   // useEffect(()=>{
   //   const checkedCategories = Object.keys(priceChecked).filter(
@@ -158,9 +180,12 @@ const Brand = (props) => {
     console.log("checkedCategories:", checkedCategories);
   
     if (checkedCategories.length === 0) {
+      // SetCheck
       setCheck({...ischecked})
       setproducts(demData);
-
+      if(Rating['4.5']===true || Rating['3.5']===true){
+        setRating({...Rating});
+      }
     } 
     else {
       var mi = 1e9 + 7;
@@ -180,8 +205,9 @@ const Brand = (props) => {
       console.log("ma:", ma);
 
       if (ma === mi) {
+        console.log(demData);
         const filteredProducts = demData.filter(
-          (item) => item.price >= mi && item.price <= (mi + 20)
+          (item) => item.price >= mi && item.price < (mi + 20)
         );
         console.log("filteredProducts:", filteredProducts);
         setproducts(filteredProducts);
@@ -193,41 +219,109 @@ const Brand = (props) => {
             k=parseInt(d);
           }
           console.log(k);
-          if(k!=0){
-            const filteredProducts = demData.filter(
-              (item) => (item.price >=k  && item.price <= (k+20))
-            );
-            console.log(filteredProducts);
-            if(filteredProducts.length!=0){
+          if(k===0){
+            console.log(demData);
+           const filteredProducts = demData.filter(
+            (item) => (item.price >=150)
+          );
+          console.log(filteredProducts);
+          if(filteredProducts.length!=0){
               filteredProducts.map((item)=>{result.push(item)});
-           }
+          }
           }
           else{
+            console.log(demData);
             const filteredProducts = demData.filter(
-              (item) => (item.price >=150)
+              (item) => (item.price >=k  && item.price < (k+20))
             );
-            console.log(filteredProducts);
+            // console.log(filteredProducts);
             if(filteredProducts.length!=0){
               filteredProducts.map((item)=>{result.push(item)});
            }
+
           }
-          
-          
           // console.log(result);
         })
         // console.log(result);
         // console.log("filteredProducts:", filteredProducts);
         setproducts(result);
+        // setData(result);
       }
     }
   }, [priceChecked]);
   
+
+  useEffect(()=>{
+    const checkedCategories = Object.keys(Rating).filter(
+      (key) => Rating[key]
+    );
+    console.log("checkedCategories:", checkedCategories);
+    if (checkedCategories.length === 0) {
+      setCheck({...ischecked})
+      setproducts(demData);
+      if(priceChecked[110]===true || priceChecked[130]===true || priceChecked[70]===true || priceChecked[90]===true || priceChecked.above===true){
+        setPrice({...priceChecked})
+      }
+      
+    } 
+    else{
+      var mi = 1e9 + 7;
+      var ma = -1e9 + 7;
+      checkedCategories.forEach((item) => {
+        if (item - '0' < mi) {
+          mi = item - '0';
+        }
+        if (item - '0' > ma) {
+          ma = item - '0';
+        }
+        if(item==='above'){
+            ma=-1;
+        } 
+      });
+      console.log("mi:",mi);
+      console.log("ma:", ma);
+      if (ma === mi) {
+        const filteredProducts = RatingData.filter(
+          (item) => item.rating > mi && item.rating <= (mi + 0.5)
+        );
+        console.log("filteredProducts:", filteredProducts);
+        setproducts(filteredProducts);
+        setDemo(filteredProducts);
+      }
+      else{
+        let result=[];
+        checkedCategories.forEach((d)=>{
+          let k=parseFloat(d);
+          console.log(k);
+            const filteredProducts = RatingData.filter(
+              (item) => (item.rating > k  && item.rating <= (k+0.5))
+            );
+            console.log(filteredProducts);
+            if(filteredProducts.length!=0){
+              filteredProducts.map((item)=>{result.push(item)});
+           }     
+          // console.log(result);
+        })
+        console.log(result);
+        setproducts(result);
+        // setDemo(result);
+      }
+
+    }
+
+  },[Rating])
 
 
   const handleChangePrice=(e)=>{
     e.preventDefault();
     const name=e.target.name;
     setPrice({...priceChecked,[name]:e.target.checked});
+  }
+
+  
+  const handleRatingChange=(e)=>{
+    const name=e.target.name;
+    setRating({...Rating,[name]:e.target.checked});
   }
 
     
@@ -280,7 +374,7 @@ const Brand = (props) => {
             <p>Price 130 - 150</p>
           </div>
           <div className='pl-4 inline-flex space-x-2 items-center ml-2'>
-            <input type="checkbox" name='above' checked={priceChecked.above} onClick={handleChangePrice}/>
+              <input type="checkbox" name='above' checked={priceChecked.above} onClick={handleChangePrice}/>
             <p>150 or Above</p>
           </div>
         </div>
@@ -288,20 +382,12 @@ const Brand = (props) => {
         <div className='w-full p-2 space-y-3'>
           <h1  className='pl-5 font-semibold text-xl'>Rating</h1>
           <div className='pl-4 w-full inline-flex space-x-2 items-center ml-2'>
-            <input type="checkbox" />
+            <input type="checkbox" name='4.5' checked={Rating[4.5]} onChange={handleRatingChange}/>
             <p>Rating 4.5 - 5</p>
           </div>
           <div className='pl-4 w-full inline-flex space-x-2 items-center ml-2'>
-            <input type="checkbox" />
+            <input type="checkbox" name='3.5' checked={Rating[3.5]} onChange={handleRatingChange} />
             <p>Rating 3.5 - 4</p>
-          </div>
-          <div className='pl-4 w-full inline-flex space-x-2 items-center ml-2'>
-            <input type="checkbox" />
-            <p>Rating 2.5 - 3</p>
-          </div>
-          <div className='pl-4 w-full inline-flex space-x-2 items-center ml-2'>
-            <input type="checkbox" />
-            <p>Rating 1.5 - 2</p>
           </div>
           
         </div>
@@ -340,24 +426,24 @@ const Brand = (props) => {
         <div className='flex-col xl:w-[400px] p-2 h--full space-y-4'>
           <h1 className='pl-5'>Mutti</h1>
           <div className=' inline-flex space-x-2 items-center ml-2'>
-            <input type="checkbox" />
+            <input type="checkbox" name='70' checked={priceChecked[70]} onChange={handleChangePrice}/>
             <p>Price 70 - 90</p>
           </div>
           <div className='inline-flex space-x-2 items-center ml-2'>
-            <input type="checkbox" />
-            <p>Price 70 - 90</p>
+          <input type="checkbox" name='90' checked={priceChecked[90]} onClick={handleChangePrice}/>
+            <p>Price  90 - 110</p>
           </div>
           <div className='inline-flex space-x-2 items-center ml-2'>
-            <input type="checkbox" />
-            <p>Price 70 - 90</p>
+          <input type="checkbox" name='110' checked={priceChecked[110]} onClick={handleChangePrice}/>
+            <p>Price 110 - 130</p>
           </div>
           <div className='inline-flex space-x-2 items-center ml-2'>
-            <input type="checkbox" />
-            <p>Price 70 - 90</p>
+          <input type="checkbox" name='130' checked={priceChecked[130]} onClick={handleChangePrice}/>
+            <p>Price 130 - 150</p>
           </div>
           <div className='inline-flex space-x-2 items-center ml-2'>
-            <input type="checkbox" />
-            <p>Price 70 - 90</p>
+            <input type="checkbox" name='above' checked={priceChecked.above} onClick={handleChangePrice}/>
+            <p>150 or Above</p>
           </div>  
         </div>
 
@@ -430,23 +516,22 @@ const Brand = (props) => {
       </div>
     
     
-    <div className="mx-auto px-2 max-w-7xl sm:py-10 lg:px-10 grid grid-cols-1 gap-x-4 gap-y-10 sm:grid-cols-2 sm:gap-x-3 lg:grid-cols-2 lg:gap-x-3 xl:grid-cols-3 xl:gap-x-8 h-full">
-      {data && data.length>0? (data.map((item)=>{
+      {data && data.length>0?<div className="mx-auto sm:px-2 max-w-7xl sm:py-10 lg:px-10 grid grid-cols-1 gap-x-4 gap-y-10 sm:grid-cols-2 sm:gap-x-3 lg:grid-cols-2 lg:gap-x-3 xl:grid-cols-3 xl:gap-x-8 h-full">
+       {(data.map((item)=>{
         return(
           <>
               <div className={`relative flex-col flex rounded-lg w-full bg-[#171717] overflow-hidden border border-1 h-[500px] `}>
-                    <div className="w-full pb-10 sm:pb-0 overflow-hidden">
-                        <img src={item.img} alt=""className={` ${item.img===prod4?"ml-10 sm:ml-14 mb-10 sm:pl-0":"ml-0 sm:pl-24"} ${item.img===prod3 ||  item.img===prod4 || item.img===prod5 ?"mt-0 pl-0 ":"h-[250px] ml-16 sm:ml-0  sm:h-full"} `}/>
+                    <div className="w-full h-full pb-10 sm:pb-0 overflow-hidden">
+                        <img src={item.img} alt=""className={` ${item.img===prod3 ||  item.img===prod4 || item.img===prod5 ?"mt-0 pl-0 scale-[0.8]":"h-[250px] mx-auto sm:h-full"} `}/>
                     </div>
                     <div className='pl-6 mb-4 sm:spcae-y-3 sm:block'>
                     <span className="text-white text-2xl inline-flex"> |<h1 className="text-white font-medium sm:block sm:pt-[1px] pl-2">{item.name}</h1></span>
                         <p className="text-white text-lg font-medium  sm:pl-0 sm:pr-3">{item.title} <p className="text-white hidden sm:block text-sm">{item.caption}</p> </p>
                         <div className="flex space-x-1 pr-2 hidden sm:flex">
-                        <p className="text-white pr-2">4.0</p>
-                        <span >&#11088;</span>
-                        <span >&#11088;</span>
-                        <span >&#11088;</span>
-                        <span >&#11088;</span>
+                        <p className="text-white pr-2">{item.rating}</p>
+                        {[...Array(Math.round(item.rating))].map((_, index) => (
+                                    <span key={index}>&#11088;</span>
+                            ))}
                         </div>
                         <h2 className="sm:pl-0 text-white text-left pb-2">Price: <span className="text-xl">$ </span><span className='text-2xl font-semibold'>{item.price}</span></h2>
                         <div className="w-full pr-5 space-y-3">
@@ -459,15 +544,15 @@ const Brand = (props) => {
                 </div>
                 </> 
         )
-      })):<div className='h-[500px] ml-[400px] w-full max-w-7xl px-2 py-28 mx-auto'>
-             <div className='h-fit max-w-7xl w-full block text-center'>
-                <img src={luffy} alt="" className='w-[50px] ml-40'/>
+      }))
+        }
+      </div>:<div className='h-[500px] max-w-7xl px-2 py-28 sm:mx-auto'>
+             <div className='w-fit sm:w-[400px] max-w-7xl block text-center mx-auto'>
+                <img src={luffy} alt="" className='mx-auto w-[50px] '/>
                 <h1 className='font-medium'>Data Not Found</h1>
                 <h1>We are in Hurry to Look For new Products . Meanwhile Try our latest deals</h1>
             </div>
-        </div>
-        }
-      </div>
+        </div>}
     </div>
     <Footer></Footer>
     </>

@@ -12,7 +12,8 @@ const productItem=[
     "title": "Nike Air Max 270",
     "caption": "Just Do It",
     "price": 120,
-    "type": "Men"
+    "type": "Men",
+    "rating": 4.5
   },
   {
     "id": 2,
@@ -21,7 +22,8 @@ const productItem=[
     "title": "Puma RS-X Reinvention",
     "caption": "Run the Streets",
     "price": 110,
-    "type": "Men"
+    "type": "Men",
+    "rating": 4.5
   },
   {
     "id": 3,
@@ -30,7 +32,8 @@ const productItem=[
     "title": "Adidas UltraBoost",
     "caption": "Boost Your Run",
     "price": 180,
-    "type": "Men"
+    "type": "Men",
+    "rating": 4.2
   },
   {
     "id": 4,
@@ -39,7 +42,8 @@ const productItem=[
     "title": "Gucci Ace Sneakers",
     "caption": "Luxury on Your Feet",
     "price": 650,
-    "type": "Men"
+    "type": "Men",
+    "rating": 4.8
   },
   {
     "id": 5,
@@ -48,7 +52,8 @@ const productItem=[
     "title": "New Balance 990v5",
     "caption": "Crafted in the USA",
     "price": 175,
-    "type": "Men"
+    "type": "Men",
+    "rating": 3.9
   },
   {
     "id": 6,
@@ -57,7 +62,8 @@ const productItem=[
     "title": "Nike Air Force 1",
     "caption": "Classic Never Dies",
     "price": 90,
-    "type": "Women"
+    "type": "Women",
+    "rating": 4
   },
   {
     "id": 7,
@@ -66,7 +72,8 @@ const productItem=[
     "title": "Puma Cali Sport",
     "caption": "California Dreamin'",
     "price": 80,
-    "type": "Women"
+    "type": "Women",
+    "rating": 3.8
   },
   {
     "id": 8,
@@ -75,7 +82,8 @@ const productItem=[
     "title": "Converse Chuck Taylor All Star",
     "caption": "Timeless Style",
     "price": 55,
-    "type": "Women"
+    "type": "Women",
+    "rating": 4.2
   },
   {
     "id": 9,
@@ -84,7 +92,8 @@ const productItem=[
     "title": "Gucci Rhyton Sneaker",
     "caption": "Statement Piece",
     "price": 890,
-    "type": "Women"
+    "type": "Women",
+    "rating": 3.6
   },
   {
     "id": 10,
@@ -93,7 +102,8 @@ const productItem=[
     "title": "Vans Old Skool",
     "caption": "Off the Wall",
     "price": 60,
-    "type": "Women"
+    "type": "Women",
+    "rating": 4.3
   },
   {
     "id": 11,
@@ -102,7 +112,8 @@ const productItem=[
     "title": "Adidas Superstar",
     "caption": "Iconic Design",
     "price": 80,
-    "type": "Men"
+    "type": "Men",
+    "rating": 4
   },
   {
     "id": 12,
@@ -111,7 +122,8 @@ const productItem=[
     "title": "Nike React Element 55",
     "caption": "Next-Level Comfort",
     "price": 130,
-    "type": "Men"
+    "type": "Men",
+    "rating": 4.1
   },
   {
     "id": 13,
@@ -120,7 +132,8 @@ const productItem=[
     "title": "Puma Future Rider",
     "caption": "Ride On",
     "price": 85,
-    "type": "Men"
+    "type": "Men",
+    "rating": 3.5
   },
   {
     "id": 14,
@@ -129,7 +142,8 @@ const productItem=[
     "title": "Gucci Screener Sneaker",
     "caption": "Vintage Vibes",
     "price": 980,
-    "type": "Men"
+    "type": "Men",
+    "rating": 3.6
   },
   {
     "id": 15,
@@ -138,7 +152,8 @@ const productItem=[
     "title": "New Balance Fresh Foam 1080v11",
     "caption": "Cushion for Miles",
     "price": 150,
-    "type": "Men"
+    "type": "Men",
+    "rating": 4.4
   },
   {
     "id": 16,
@@ -147,7 +162,8 @@ const productItem=[
     "title": "Nike Air Zoom Pegasus 38",
     "caption": "Fast and Responsive",
     "price": 120,
-    "type": "Women"
+    "type": "Women",
+    "rating": 4.6
   },
   {
     "id": 17,
@@ -156,7 +172,8 @@ const productItem=[
     "title": "Puma Suede Classic",
     "caption": "Timeless Classic",
     "price": 70,
-    "type": "Women"
+    "type": "Women",
+    "rating": 4.3
   },
   {
     "id": 18,
@@ -165,7 +182,8 @@ const productItem=[
     "title": "Converse Chuck 70",
     "caption": "Vintage Vibes",
     "price": 80,
-    "type": "Women"
+    "type": "Women",
+    "rating": 4.2
   },
   {
     "id": 19,
@@ -174,7 +192,8 @@ const productItem=[
     "title": "Gucci Ace Embroidered Sneaker",
     "caption": "Luxury Craftsmanship",
     "price": 790,
-    "type": "Women"
+    "type": "Women",
+    "rating": 4
   },
   {
     "id": 20,
@@ -183,7 +202,8 @@ const productItem=[
     "title": "Vans SK8-Hi",
     "caption": "Off the Wall High Top",
     "price": 65,
-    "type": "Women"
+    "type": "Women",
+    "rating": 3.5
   }
 ];
 

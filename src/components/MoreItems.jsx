@@ -7,86 +7,10 @@ import prod5 from '../prod5.png';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import { useState } from 'react';
-
+import productItem from '../data';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 const MoreItems = () => {
-
-    const productItem=[
-        {
-            id:1,
-            img:prod1,
-            name:"SNEAKERS",
-            title:"Nike Air Jordan",
-            caption:"Falirues Not an Option it's a Step",
-            price:"120.00",
-            type:"Men"
-        },
-        {
-            id:2,
-            img:prod2,
-            name:"NIKE",
-            title:"Nike Air Jordan",
-            caption:"Falirues Not an Option it's a Step",
-            price:"135.00",
-            type:"Women"
-        },
-        {
-            id:3,
-            img:prod3,
-            name:"NIKE",
-            title:"Nike Air Jordan",
-            caption:"Falirues Not an Option it's a Step",
-            price:"146.25",
-            type:"Unisex"
-        },
-        {
-            id:4,
-            img:prod4,
-            name:"NIKE",
-            title:"Nike Air Jordan",
-            caption:"Falirues Not an Option it's a Step",
-            price:"130.35",
-            type:"Men"
-        },
-        {
-            id:5,
-            img:prod3,
-            name:"NIKE",
-            title:"Nike Air Jordan",
-            caption:"Falirues Not an Option it's a Step",
-            price:"280.00",
-            type:"Unisex"
-        },
-        {
-            id:6,
-            img:prod5,
-            name:"NIKE",
-            title:"Nike Air Jordan",
-            caption:"Falirues Not an Option it's a Step",
-            price:"230.00",
-            type:"Unisex"
-        },
-        {
-            id:7,
-            img:prod4,
-            name:"NIKE",
-            title:"Nike Air Jordan",
-            caption:"Falirues Not an Option it's a Step",
-            price:"240.00",
-            type:"Women"
-        },
-        {
-            id:8,
-            img:prod2,
-            name:"NIKE",
-            title:"Nike Air Jordan",
-            caption:"Falirues Not an Option it's a Step",
-            price:"100.00",
-            type:"Men"
-        }
-        
-    ]
 
     function SampleNextArrow(props) {
         const { className, style, onClick } = props;
@@ -165,20 +89,19 @@ const MoreItems = () => {
                         <h1 className="text-white font-medium hidden sm:block pt-5 sm:pr-2">{item.name}<span className="text-white text-2xl "> |</span></h1>
                         <p className="text-white text-lg font-medium pl-4 sm:pl-0 sm:pr-3">{item.title} <p className="text-white hidden sm:block text-sm">{item.caption}</p> </p>
                         <div className="flex space-x-1 pl-3 pr-2 hidden sm:flex">
-                        <p className="text-white pr-2">4.0</p>
-                        <span >&#11088;</span>
-                        <span >&#11088;</span>
-                        <span >&#11088;</span>
-                        <span >&#11088;</span>
+                        <p className="text-white pr-2">{item.rating}</p>
+                        {[...Array(Math.round(item.rating))].map((_, index) => (
+                                    <span key={index}>&#11088;</span>
+                            ))}
                         </div>
                         <h2 className="text-white text-left pl-4">Price: <span className="text-xl">$</span>{item.price}</h2>
                         <div className="w-full justify-right px-3 space-y-1 sm:space-y-3">
                         <Link to="/Item" state={item}><button className="text-white border border-white px-3 py-2 rounded-lg w-full">Explore</button></Link>
                             <button className="text-black font-medium border border-white px-3 py-2 rounded-lg w-full bg-[#EF9A53]">Add to Cart</button>
                         </div>
-                        <p className="hidden md:block text-white absolute right-24 pt-2 w-60 opacity-30 hover:opacity-60">Free Delivery by Mugiwara</p>
+                        
                     </div>
-                    
+                    <p className="hidden md:block text-white absolute right-12 bottom-4 pt-2 w-60 opacity-30 hover:opacity-60">Free Delivery by Mugiwara</p>
                 </div>
                 </>
             )})}

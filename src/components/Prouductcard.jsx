@@ -11,83 +11,11 @@ import { Link } from "react-router-dom";
 import Slide from 'react-reveal/Slide';
 import Fade from 'react-reveal/Fade';
 import Reveal from 'react-reveal/Reveal';
+import TrimProducts from "../TrimData";
+
+
 
 function Productcard(props){
-    const productItem=[
-        {
-            id:1,
-            img:prod1,
-            name:"SNEAKERS",
-            title:"Nike Air Jordan",
-            caption:"Falirues Not an Option it's a Step",
-            price:"120.00",
-            type:"Men"
-        },
-        {
-            id:2,
-            img:prod2,
-            name:"NIKE",
-            title:"Nike Air Jordan",
-            caption:"Falirues Not an Option it's a Step",
-            price:"135.00",
-            type:"Women"
-        },
-        {
-            id:3,
-            img:prod3,
-            name:"NIKE",
-            title:"Nike Air Jordan",
-            caption:"Falirues Not an Option it's a Step",
-            price:"146.25",
-            type:"Unisex"
-        },
-        {
-            id:4,
-            img:prod4,
-            name:"NIKE",
-            title:"Nike Air Jordan",
-            caption:"Falirues Not an Option it's a Step",
-            price:"130.35",
-            type:"Men"
-        },
-        {
-            id:5,
-            img:prod3,
-            name:"NIKE",
-            title:"Nike Air Jordan",
-            caption:"Falirues Not an Option it's a Step",
-            price:"280.00",
-            type:"Unisex"
-        },
-        {
-            id:6,
-            img:prod5,
-            name:"NIKE",
-            title:"Nike Air Jordan",
-            caption:"Falirues Not an Option it's a Step",
-            price:"230.00",
-            type:"Unisex"
-        },
-        {
-            id:7,
-            img:prod4,
-            name:"NIKE",
-            title:"Nike Air Jordan",
-            caption:"Falirues Not an Option it's a Step",
-            price:"240.00",
-            type:"Women"
-        },
-        {
-            id:8,
-            img:prod2,
-            name:"NIKE",
-            title:"Nike Air Jordan",
-            caption:"Falirues Not an Option it's a Step",
-            price:"100.00",
-            type:"Men"
-        }
-        
-    ]
     const posScroll = useScrollPosition();
     return <Fade bottom><section className={`m-auto sm:mt-10 space-y-12 px-2 py-16 sm:px-6 sm:py-24 lg:max-w-10xl lg:px-8 `}>
         <div className="justify-center text-center flex items-center p-5">
@@ -96,7 +24,7 @@ function Productcard(props){
             </div>
         </div>
         <div className="px-0 lg:px-10 grid grid-cols-1 gap-x-3 gap-y-10 sm:grid-cols-2 sm:gap-x-3 lg:grid-cols-2 lg:gap-x-3 xl:grid-cols-4 xl:gap-x-8">
-            {productItem.map(function(item){
+            {TrimProducts.map(function(item){
                return <>
               <div className={`relative block sm:flex-row flex flex-col rounded-lg w-full bg-[#171717] overflow-hidden border border-1 h-[400px] sm:h-full `}>
                     <div className="w-full pb-10 sm:pb-0 sm:h-full sm:w-full overflow-hidden">
@@ -106,20 +34,18 @@ function Productcard(props){
                         <h1 className="text-white font-medium hidden sm:block pt-5 sm:pr-2">{item.name}<span className="text-white text-2xl "> |</span></h1>
                         <p className="text-white text-lg font-medium pl-4 sm:pl-0 sm:pr-3">{item.title} <p className="text-white hidden sm:block text-sm">{item.caption}</p> </p>
                         <div className="flex space-x-1 pl-3 pr-2 hidden sm:flex">
-                        <p className="text-white pr-2">4.0</p>
-                        <span >&#11088;</span>
-                        <span >&#11088;</span>
-                        <span >&#11088;</span>
-                        <span >&#11088;</span>
+                        <p className="text-white pr-2">{item.rating}</p>
+                            {[...Array(Math.round(item.rating))].map((_, index) => (
+                                    <span>&#11088;</span>
+                            ))}
                         </div>
                         <h2 className="text-white text-left pl-4">Price: <span className="text-xl">$</span>{item.price}</h2>
                         <div className="w-full justify-right px-3 space-y-1 sm:space-y-3">
                         <Link to="/Item" state={item}><button className="text-white border border-white px-3 py-2 rounded-lg w-full">Explore</button></Link>
                             <button className="text-black font-medium border border-white px-3 py-2 rounded-lg w-full bg-[#EF9A53]">Add to Cart</button>
                         </div>
-                        <p className="hidden md:block text-white absolute right-24 pt-2 w-60 opacity-30">Free Delivery by Mugiwara</p>
                     </div>
-                    
+                    <p className="hidden md:block text-white absolute right-12 bottom-4 pt-2 w-60 opacity-30 hover:opacity-60">Free Delivery by Mugiwara</p>
                 </div>
                 
             </>
