@@ -9,8 +9,10 @@ import profile from '../profile.png';
 import { useScrollPosition } from "../hooks/useScrollPosition";
 import { useRef } from "react";
 
-function Header(props){
+import { useNavigate } from "react-router-dom";
 
+function Header(props){
+  const navigate=useNavigate();
 
   const scrollPosition = useScrollPosition();
 
@@ -53,11 +55,11 @@ function Header(props){
                 </div>
             <div className="hidden lg:ml-40 sm:flex sm:ml-20 justify-around items-center">
               <div className="flex lg:space-x-6 md:space-x-2">
-                <a className="p-4 text-bold "><p className="hover:text-semibold p-1 hover:border-b-2 border-b-black" onClick={()=>{scrollToPosition(0)}}>Home</p></a>
-                <a className="p-4 "><p className="hover:text-semibold p-1 hover:border-b-2 border-b-black" onClick={()=>{scrollToPosition(600)}}>Offers</p></a>
-                <a  className="p-4"><p className="hover:text-semibold p-1  hover:border-b-2 border-b-black" onClick={()=>{scrollToPosition(1200)}}>Products</p></a>
-                <a  className="p-4"><p className="hover:text-semibold p-1  hover:border-b-2 border-b-black" onClick={()=>{scrollToPosition(2400)}}>Brands</p></a>
-                <a  className="p-4"><p className="hover:text-semibold p-1  hover:border-b-2 border-b-black">Women</p></a>
+                <a className="p-4 text-bold "><a className="hover:text-semibold p-1 hover:border-b-2 border-b-black cursor-pointer" onClick={()=>{scrollToPosition(0)}}>Home</a></a>
+                <a className="p-4 "><p className="hover:text-semibold p-1 hover:border-b-2 border-b-black cursor-pointer" onClick={()=>{scrollToPosition(600)}}>Offers</p></a>
+                <a  className="p-4"><p className="hover:text-semibold p-1  hover:border-b-2 border-b-black cursor-pointer" onClick={()=>{scrollToPosition(1200)}}>Products</p></a>
+                <a  className="p-4"><p className="hover:text-semibold p-1  hover:border-b-2 border-b-black cursor-pointer" onClick={()=>{scrollToPosition(2400)}}>Brands</p></a>
+                <a  className="p-4"><p className="hover:text-semibold p-1  hover:border-b-2 border-b-black cursor-pointer" onClick={()=>{navigate('/cart')}}>Cart</p></a>
               </div>
           </div>
             <div className="hidden 2xl:flex absolute inset-y-0 right-0 flex items-center xl:static xl:ml-20 xl:px-10 border-black">
@@ -136,7 +138,7 @@ function Header(props){
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                   >
-        <Disclosure.Panel className="sm:hidden ">
+        <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
             <Disclosure.Button
                   className='w-full bg-black text-white hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium'>

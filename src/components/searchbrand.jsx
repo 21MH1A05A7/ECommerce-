@@ -46,19 +46,19 @@ function Searchbrand(){
                         <button className="px-4 border border-black rounded-full bg-[#EF9A53]" onClick={handleClick}>Check</button>
                     </div>
                     <div className="flex flex-row px-3 sm:px-0 sm:ml-6 space-x-5 sm:pt-4">
-                        <a href="" className="rounded-full border-[2px] border-black p-2 bg-[#CCC8AA]"><img src={nike} alt="" className="w-10 rounded-full"/></a>
-                        <a href="www.nike.com" className="rounded-full border-[2px] border-black p-2 bg-[#CCC8AA]"><img src={gucci} alt="" className="w-10 mt-2"/></a>
-                        <a href="www.nike.com" className="rounded-full border-[2px] border-black p-2 bg-[#CCC8AA]"><img src={puma} alt="" className="w-10 mt-1 rounded-full"/></a>
+                        <a href="" className="rounded-full border-[2px] border-black p-2 bg-[#CCC8AA]"><img src={nike} name="Nike" alt="" className="w-10 rounded-full"/></a>
+                        <a href="www.nike.com" className="rounded-full border-[2px] border-black p-2 bg-[#CCC8AA]"><img src={gucci} name="Gucci" alt="" className="w-10 mt-2"/></a>
+                        <a href="www.nike.com" className="rounded-full border-[2px] border-black p-2 bg-[#CCC8AA]"><img src={puma} alt="" name="Puma" className="w-10 mt-1 rounded-full"/></a>
                         <a href="www.nike.com" className="rounded-full border-[2px] border-black p-2 bg-[#CCC8AA]"><img src={addidas} alt="" className="w-10 mt-1 rounded-full"/></a>
                     </div>
                     
                 </div>
 
-                <div className="flex space-x-6 z-[10] sm:space-x-0 sm:block absolute space-y-0 sm:space-y-4 right-[70px] bottom-36 sm:right-10 sm:top-14">
-                <img src={mail} alt="" className="sm:block w-[30px] h-[30px] opacity-30 transition delay-30 hover:opacity-80"/>
-                <img src={tele} alt="" className="sm:block w-[30px] h-[30px] opacity-30 transition delay-30 hover:opacity-80"/>
-                <img src={inst} alt="" className="sm:block w-[30px] h-[30px] opacity-30 transition delay-30 hover:opacity-80"/>
-                
+                <div className="flex space-x-6 z-[10] sm:space-x-0 sm:block absolute space-y-0 sm:space-y-4 right-[100px] bottom-36 sm:right-10 sm:top-14">
+                    <img src={mail} alt="" className="sm:block w-[30px] h-[30px] opacity-30 transition delay-30 hover:opacity-80"/>
+                    <img src={tele} alt="" className="sm:block w-[30px] h-[30px] opacity-30 transition delay-30 hover:opacity-80"/>
+                    <img src={inst} alt="" className="sm:block w-[30px] h-[30px] opacity-30 transition delay-30 hover:opacity-80"/>
+                    
                 </div>
                 </Fade>
                 <Fade right><img src={g2} alt="" className="hidden 2xl:block w-[1150px] h-[850px] ml-3 mt-[63px]"/> </Fade>

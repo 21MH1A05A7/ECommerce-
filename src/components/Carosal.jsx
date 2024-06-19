@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
-import Carcard from "./Carcard";
-import background from "../background.png";
+// import background from "../background.png";
 import img from "../running.png";
 
 // B A N N E R

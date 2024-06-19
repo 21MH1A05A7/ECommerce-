@@ -12,11 +12,21 @@ import Slide from 'react-reveal/Slide';
 import Fade from 'react-reveal/Fade';
 import Reveal from 'react-reveal/Reveal';
 import TrimProducts from "../TrimData";
-
-
+import { useContext } from "react";
+import cartContext from "../Context/cartContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Productcard(props){
     const posScroll = useScrollPosition();
+    const context=useContext(cartContext);
+    
+    const {CartItems,handledata}=context;
+    const handleClick=(item)=>{
+        handledata(item);
+        toast.success("Successfully added to cart")
+    }
+
     return <Fade bottom><section className={`m-auto sm:mt-10 space-y-12 px-2 py-16 sm:px-6 sm:py-24 lg:max-w-10xl lg:px-8 `}>
         <div className="justify-center text-center flex items-center p-5">
             <div className="text-center px-5  px-3 pb-2 border-b border-b-black">
@@ -42,17 +52,18 @@ function Productcard(props){
                         <h2 className="text-white text-left pl-4">Price: <span className="text-xl">$</span>{item.price}</h2>
                         <div className="w-full justify-right px-3 space-y-1 sm:space-y-3">
                         <Link to="/Item" state={item}><button className="text-white border border-white px-3 py-2 rounded-lg w-full">Explore</button></Link>
-                            <button className="text-black font-medium border border-white px-3 py-2 rounded-lg w-full bg-[#EF9A53]">Add to Cart</button>
+                            <button className="text-black font-medium border border-white px-3 py-2 rounded-lg w-full bg-[#EF9A53]" onClick={()=>{handleClick(item)}}>Add to Cart</button>
                         </div>
                     </div>
-                    <p className="hidden md:block text-white absolute right-12 bottom-4 pt-2 w-60 opacity-30 hover:opacity-60">Free Delivery by Mugiwara</p>
+                    {/* <p className="hidden md:block text-white absolute right-12 bottom-4 pt-2 w-60 opacity-30 hover:opacity-60">Free Delivery by Mugiwara</p> */}
                 </div>
                 
             </>
             })}
         </div>
-    
+        
     </section>
+    
     </Fade>
 }
 export default Productcard;

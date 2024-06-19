@@ -3,6 +3,12 @@ import prod2 from './prod2.png';
 import prod3 from './prod3.png';
 import prod4 from './prod4.png';
 import prod5 from './prod5.png';
+import YSneakers from './YellowSneakers.png';
+import BSneakers from './BlackSneakers.png';
+import B2S from './B2Sneakers.png';
+import RD1 from './RedSneakers.png';
+import Class from './Classic.png'
+
 
 const TrimProducts=[
   {
@@ -17,7 +23,7 @@ const TrimProducts=[
   },
   {
     "id": 2,
-    "img": prod5,
+    "img": RD1,
     "name": "Puma",
     "title": "Puma RS-X",
     "caption": "Run the Streets",
@@ -37,7 +43,7 @@ const TrimProducts=[
   },
   {
     "id": 4,
-    "img": prod4,
+    "img": BSneakers,
     "name": "Gucci",
     "title": "Gucci Ace Sneakers",
     "caption": "Luxury on Your Feet",
@@ -47,7 +53,7 @@ const TrimProducts=[
   },
   {
     "id": 5,
-    "img": prod2,
+    "img": prod3,
     "name": "New Balance",
     "title": "New Balance 990v5",
     "caption": "Crafted in the USA",
@@ -67,7 +73,7 @@ const TrimProducts=[
   },
   {
     "id": 7,
-    "img": prod4,
+    "img": B2S,
     "name": "Puma",
     "title": "Puma Cali Sport",
     "caption": "California Dreamin'",
@@ -77,7 +83,7 @@ const TrimProducts=[
   },
   {
     "id": 8,
-    "img": prod1,
+    "img": Class,
     "name": "Converse",
     "title": "Converse Chuck Taylor All Star",
     "caption": "Timeless Style",

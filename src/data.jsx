@@ -3,11 +3,13 @@ import prod2 from './prod2.png';
 import prod3 from './prod3.png';
 import prod4 from './prod4.png';
 import prod5 from './prod5.png';
-
+import BSneakers from './BlackSneakers.png';
+import B2S from './B2Sneakers.png'
+import YSneakers from './YellowSneakers.png';
 const productItem=[
   {
     "id": 1,
-    "img": prod1,
+    "img": BSneakers,
     "name": "Nike",
     "title": "Nike Air Max 270",
     "caption": "Just Do It",
@@ -17,7 +19,7 @@ const productItem=[
   },
   {
     "id": 2,
-    "img": prod5,
+    "img": prod3,
     "name": "Puma",
     "title": "Puma RS-X Reinvention",
     "caption": "Run the Streets",
@@ -27,7 +29,7 @@ const productItem=[
   },
   {
     "id": 3,
-    "img": prod3,
+    "img": B2S,
     "name": "Adidas",
     "title": "Adidas UltraBoost",
     "caption": "Boost Your Run",

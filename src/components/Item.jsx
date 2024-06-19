@@ -9,10 +9,26 @@ import { RadioGroup } from '@headlessui/react';
 import Header from './Header';
 import MoreItems from './MoreItems';
 import Footer from './footer';
+import CartItems from '../CartItems';
+import Cart from './Cart';
+import { useContext } from 'react';
+import cartContext from '../Context/cartContext';
+
 const Item = (props) => {
     const location = useLocation();
     const data=location.state;
     // console.log(typeof(data.img));
+
+    const context=useContext(cartContext);
+    // context;
+    const {CartItems,handledata}=context;
+    // console.log(handledata);
+    console.log(context);
+    const handleClick=(e)=>{
+      e.preventDefault();
+      handledata(data);
+    }
+
     return (
 <>  
       {/* <Header></Header> */}
@@ -147,7 +163,7 @@ const Item = (props) => {
                             </RadioGroup>
                             <div className='flex md:px-4 py-6 space-x-3 md:space-x-6'>
                                 <button className='px-6 md:px-10 rounded-xl font-medium py-2 md:py-4 border border-black'>Buy Now</button>
-                                <button className='px-6 md:px-10 rounded-xl font-medium py-2 md:py-4 border border-black bg-[#EF9A53]'>Add to Cart</button> 
+                                <button className='px-6 md:px-10 rounded-xl font-medium py-2 md:py-4 border border-black bg-[#EF9A53]' onClick={handleClick}>Add to Cart</button> 
                             </div>
                         </div>
                     </div>

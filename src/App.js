@@ -10,13 +10,15 @@ import Item from './components/Item';
 import { useRef } from 'react';
 // import Puma from './components/Brand.jsx'
 import Brand from './components/Brand';
-
+import Cart from './components/Cart';
+import SetCart from './Context/useSetCart';
+import { ToastContainer } from 'react-toastify';
 function App() {
 
 
 
   return (
-    <>
+    <SetCart>
       <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home />}></Route>
@@ -24,10 +26,11 @@ function App() {
               <Route path="/Signup" element={<Signup></Signup>} />  
               <Route path="/Item" Component={Item}></Route>
               <Route path="/brand" element={<Brand></Brand>}></Route>
+              <Route path="/cart" element={<Cart></Cart>}></Route>
             </Routes>
         </BrowserRouter>
-
-    </>
+        <ToastContainer />
+    </SetCart>
   );
 }
 

@@ -73,12 +73,6 @@ const Brand = (props) => {
       setproducts(productItem);
       setDemo(productItem);
       setData(productItem)
-      if(priceChecked[110]===true || priceChecked[130]===true || priceChecked[70]===true || priceChecked[90]===true || priceChecked.above===true){
-        setPrice({...priceChecked})
-      }
-      if(Rating['4.5']===true || Rating['3.5']===true){
-        setRating({...Rating});
-      }
     }
     else{ 
       const checkedCategories = Object.keys(ischecked).filter(
@@ -90,12 +84,6 @@ const Brand = (props) => {
           setproducts(arr);
           setDemo(arr);
           setData(arr);
-          if(priceChecked[110]===true || priceChecked[130]===true || priceChecked[70]===true || priceChecked[90]===true || priceChecked.above===true){
-            setPrice({...priceChecked})
-          }
-          if(Rating['4.5']===true || Rating['3.5']===true){
-            setRating({...Rating});
-          }
       } 
       else {
           const filteredProducts =  productItem.filter((item) =>
@@ -104,12 +92,6 @@ const Brand = (props) => {
           setproducts(filteredProducts);
           setDemo(filteredProducts);
           setData(filteredProducts);
-          if(priceChecked[110]===true || priceChecked[130]===true || priceChecked[70]===true || priceChecked[90]===true || priceChecked.above===true){
-            setPrice({...priceChecked})
-          }
-          if(Rating['4.5']===true || Rating['3.5']===true){
-            setRating({...Rating});
-          }
       }
     }
     }
@@ -180,9 +162,7 @@ const Brand = (props) => {
     console.log("checkedCategories:", checkedCategories);
   
     if (checkedCategories.length === 0) {
-      // SetCheck
       setCheck({...ischecked})
-      setproducts(demData);
       if(Rating['4.5']===true || Rating['3.5']===true){
         setRating({...Rating});
       }
@@ -211,6 +191,9 @@ const Brand = (props) => {
         );
         console.log("filteredProducts:", filteredProducts);
         setproducts(filteredProducts);
+        if(filteredProducts.length!=0){
+          setData(filteredProducts);
+        }
       } else {
         let result=[];
         checkedCategories.forEach((d)=>{
@@ -242,10 +225,10 @@ const Brand = (props) => {
           }
           // console.log(result);
         })
-        // console.log(result);
-        // console.log("filteredProducts:", filteredProducts);
         setproducts(result);
-        // setData(result);
+        if(Rating['4.5']===true || Rating['3.5']===true){
+          setData(result);
+        }
       }
     }
   }, [priceChecked]);
@@ -258,11 +241,9 @@ const Brand = (props) => {
     console.log("checkedCategories:", checkedCategories);
     if (checkedCategories.length === 0) {
       setCheck({...ischecked})
-      setproducts(demData);
       if(priceChecked[110]===true || priceChecked[130]===true || priceChecked[70]===true || priceChecked[90]===true || priceChecked.above===true){
-        setPrice({...priceChecked})
+        setDemo(RatingData);
       }
-      
     } 
     else{
       var mi = 1e9 + 7;
@@ -281,6 +262,7 @@ const Brand = (props) => {
       console.log("mi:",mi);
       console.log("ma:", ma);
       if (ma === mi) {
+        console.log(RatingData);
         const filteredProducts = RatingData.filter(
           (item) => item.rating > mi && item.rating <= (mi + 0.5)
         );
@@ -304,7 +286,9 @@ const Brand = (props) => {
         })
         console.log(result);
         setproducts(result);
-        // setDemo(result);
+        if(priceChecked[110]===true || priceChecked[130]===true || priceChecked[70]===true || priceChecked[90]===true || priceChecked.above===true){
+          setDemo(result);
+        }
       }
 
     }
